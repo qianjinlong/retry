@@ -6,7 +6,8 @@ import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 /**
- * 类功能说明
+ * 失败重试类
+ * 注意：此类方法以阻塞的方式进行重试，若是对业务响应有需求，请自开线程进行重试
  *
  * @author qianjinlong
  * @email 1277977370@qq.com
