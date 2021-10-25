@@ -58,7 +58,6 @@ public class RetryUtil {
             retry(dataSupplier, consumer, DEFAULT_RETRY_COUNT, DEFAULT_SLEEP_TIME, null);
         } catch (RetryBusinessException e) {
             // 业务失败
-            consumer.accept(e);
         }
     }
 
@@ -75,7 +74,6 @@ public class RetryUtil {
             retry(dataSupplier, consumer, retryCount, sleepTime, null);
         } catch (RetryBusinessException e) {
             // 业务失败
-            consumer.accept(e);
         }
     }
 
