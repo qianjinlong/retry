@@ -86,7 +86,7 @@ public class RetryUtil {
      * @param <T>          返回数据类型
      * @return T
      */
-    public static <T> T retrySuccessOrElseGet(DataSupplier<T> dataSupplier, Supplier<? extends T> other) {
+    public static <T> T retrySuccessOrElseGet(DataSupplier<T> dataSupplier, Supplier<T> other) {
         return retrySuccessOrElseGet(dataSupplier, null, DEFAULT_RETRY_COUNT, DEFAULT_SLEEP_TIME, null, other);
     }
 
@@ -100,7 +100,7 @@ public class RetryUtil {
      * @param <T>          返回数据类型
      * @return T
      */
-    public static <T> T retrySuccessOrElseGet(DataSupplier<T> dataSupplier, Supplier<? extends T> other, int retryCount, long sleepTime) {
+    public static <T> T retrySuccessOrElseGet(DataSupplier<T> dataSupplier, Supplier<T> other, int retryCount, long sleepTime) {
         return retrySuccessOrElseGet(dataSupplier, null, retryCount, sleepTime, null, other);
     }
 
@@ -152,7 +152,7 @@ public class RetryUtil {
                                               int retryCount,
                                               long sleepTime,
                                               List<Class<? extends Throwable>> expectExceptions,
-                                              Supplier<? extends T> other) {
+                                              Supplier<T> other) {
         try {
             return retry(dataSupplier, exceptionCaught, retryCount, sleepTime, expectExceptions);
         } catch (RetryBusinessException e) {
