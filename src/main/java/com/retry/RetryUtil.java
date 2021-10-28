@@ -53,13 +53,16 @@ public class RetryUtil {
      *
      * @param dataSupplier 方法执行体(返回数据)
      * @param consumer     出错异常处理(包括第一次执行和重试错误)
+     * @param <T>          返回数据类型
+     * @return T
      */
-    public static void retryAnyFail(DataSupplier<?> dataSupplier, Consumer<Throwable> consumer) {
+    public static <T> T retryAnyFail(DataSupplier<T> dataSupplier, Consumer<Throwable> consumer) {
         try {
-            retry(dataSupplier, consumer, DEFAULT_RETRY_COUNT, DEFAULT_SLEEP_TIME, null);
+            return retry(dataSupplier, consumer, DEFAULT_RETRY_COUNT, DEFAULT_SLEEP_TIME, null);
         } catch (RetryBusinessException e) {
             // 业务失败
         }
+        return null;
     }
 
     /**
@@ -69,13 +72,16 @@ public class RetryUtil {
      * @param consumer     出错异常处理(包括第一次执行和重试错误)
      * @param retryCount   重试次数
      * @param sleepTime    重试间隔睡眠时间(注意：阻塞当前线程)
+     * @param <T>          T
+     * @return T
      */
-    public static void retryAnyFail(DataSupplier<?> dataSupplier, Consumer<Throwable> consumer, int retryCount, long sleepTime) {
+    public static <T> T retryAnyFail(DataSupplier<?> dataSupplier, Consumer<Throwable> consumer, int retryCount, long sleepTime) {
         try {
             retry(dataSupplier, consumer, retryCount, sleepTime, null);
         } catch (RetryBusinessException e) {
             // 业务失败
         }
+        return null;
     }
 
     /**
