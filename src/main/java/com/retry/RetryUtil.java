@@ -259,41 +259,6 @@ public class RetryUtil {
         }
     }
 
-    /**
-     * 函数式接口可以抛出异常
-     *
-     * @param <T> 返回数据类型
-     */
-    @FunctionalInterface
-    private interface DataSupplier<T> {
-        /**
-         * Gets a result.
-         *
-         * @return a result
-         * @throws Exception 错误时候抛出异常
-         */
-        T get() throws Exception;
-    }
-
-    /** 自定义业务异常 */
-    private static class RetryBusinessException extends Exception {
-        public RetryBusinessException() {
-            super();
-        }
-
-        public RetryBusinessException(String message) {
-            super(message);
-        }
-
-        public RetryBusinessException(String message, Throwable cause) {
-            super(message, cause);
-        }
-
-        public RetryBusinessException(Throwable cause) {
-            super(cause);
-        }
-    }
-
 
     public static void main(String[] args) {
 
