@@ -252,7 +252,7 @@ public class RetryUtil {
         }
 
         // 重试结束, 抛出业务异常
-        throw (RetryBusinessException) ex.getCause();
+        throw new RetryBusinessException(ex);
     }
 
     private static void catchException(Consumer<Throwable> exceptionCaught, Throwable throwable) {
