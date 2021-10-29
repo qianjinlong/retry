@@ -75,9 +75,9 @@ public class RetryUtil {
      * @param <T>          T
      * @return T
      */
-    public static <T> T retryAnyFail(DataSupplier<?> dataSupplier, Consumer<Throwable> consumer, int retryCount, long sleepTime) {
+    public static <T> T retryAnyFail(DataSupplier<T> dataSupplier, Consumer<Throwable> consumer, int retryCount, long sleepTime) {
         try {
-            retry(dataSupplier, consumer, retryCount, sleepTime, null);
+            return retry(dataSupplier, consumer, retryCount, sleepTime, null);
         } catch (RetryBusinessException e) {
             // 业务失败
         }
